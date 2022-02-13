@@ -30,7 +30,7 @@
                   @include('layouts.partials.messages')
 
                   <div class="form-outline mb-4">
-                    <input type="text" class="form-control form-control-lg" name="username" id="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus>
+                    <input type="text" class="form-control form-control-lg" name="username" id="username" value="{{ old('username') }}" placeholder="Username" required="required" autofocus onkeypress="return isEmail(event)">
                     <label class="form-label" for="username">Email address</label>
                     @if ($errors->has('username'))
                         <span class="text-danger text-left">{{ $errors->first('username') }}</span>

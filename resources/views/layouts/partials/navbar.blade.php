@@ -20,7 +20,7 @@
         {{auth()->user()->name}}
         <div class="text-end">
           <a href="{{ route('reservation.show') }}" class="btn btn-outline-light me-2">Reservation</a>
-          <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Dashboard</a>
+          <a href="{{ route('dashboard.show') }}" class="btn btn-outline-light me-2">Dashboard</a>
           <a href="{{ route('logout.perform') }}" class="btn btn-outline-light me-2">Logout</a>
         </div>
       @endauth

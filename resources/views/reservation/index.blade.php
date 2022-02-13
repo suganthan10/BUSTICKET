@@ -19,6 +19,7 @@
                   <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                   <input type="hidden" name="reserve_date"  value="{{ date('Y-m-d') }}">
                   <input type="hidden" name="user_id"  value="{{ auth()->user()->id }}">
+                  <input type="hidden" name="appbaseurl"  value="{{ url('/') }}">
                   @include('layouts.partials.messages')
 
                   <div class="row">
@@ -88,7 +89,7 @@
                       <div class="form-outline mb-4">
 
                         <label class="form-label" for="email">Seat no.</label>
-                        <input type="text" class="form-control form-control-lg" name="seat_no" id="seatno" value="{{ old('seat_no') }}">
+                        <input type="text" class="form-control form-control-lg" name="seat_no" id="seatno" readonly value="{{ old('seat_no') }}" onkeypress="return isNumberKey(event)">
                         @if ($errors->has('seat_no'))
                             <span class="text-danger text-left">{{ $errors->first('seat_no') }}</span>
                         @endif 
@@ -101,7 +102,7 @@
                       <div class="form-outline mb-4">
 
                         <label class="form-label" for="email">Name</label>
-                        <input type="text" class="form-control form-control-lg" name="name" id="name" value="{{ old('name') }}">
+                        <input type="text" class="form-control form-control-lg" name="name" id="name" value="{{ old('name') }}" onkeypress="return isTextKeySpace(event)">
                         @if ($errors->has('name'))
                             <span class="text-danger text-left">{{ $errors->first('name') }}</span>
                         @endif 
@@ -111,7 +112,7 @@
                       <div class="form-outline mb-4">
 
                         <label class="form-label" for="email">NIC</label>
-                        <input type="text" class="form-control form-control-lg" name="nic" id="nic" value="{{ old('nic') }}">
+                        <input type="text" class="form-control form-control-lg" name="nic" id="nic" value="{{ old('nic') }}" onkeypress="return isNIC(event)">
                         @if ($errors->has('nic'))
                             <span class="text-danger text-left">{{ $errors->first('nic') }}</span>
                         @endif 
@@ -124,7 +125,7 @@
                       <div class="form-outline mb-4">
 
                         <label class="form-label" for="email">Contact no.</label>
-                        <input type="text" class="form-control form-control-lg" name="contact_no" id="contactno" value="{{ old('contact_no') }}">
+                        <input type="text" class="form-control form-control-lg" name="contact_no" id="contactno" value="{{ old('contact_no') }}" onkeypress="return isNumberKey(event)">
                         @if ($errors->has('contact_no'))
                             <span class="text-danger text-left">{{ $errors->first('contact_no') }}</span>
                         @endif 
@@ -148,12 +149,21 @@
   </div>
 </section>
 
- <script>
-  $(document).ready(function () {
-    $( "#traveldate" ).datepicker({
-         dateFormat:'yy-mm-dd',
-         minDate:0
-      });
-  } );
-  </script>
+<div id="seatModal" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Select your prefered seat no.</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="radio-toolbar" id="seatinfo">
+            
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection

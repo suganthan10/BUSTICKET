@@ -6,7 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.87.0">
-    <title>Fixed top navbar example · Bootstrap v5.1</title>
+    <title>Online Bus Ticket Reservation</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{!! url('assets/bootstrap/css/bootstrap.min.css') !!}" rel="stylesheet">
@@ -15,6 +15,11 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
+
+   <!--  <script type="text/javascript">
+    var appbaseurl = {!! json_encode(url('/')) !!};
+    var csrftoken = {!! csrf_token() !!};
+    </script> -->
 
     <style>
       .bd-placeholder-img {
@@ -45,6 +50,7 @@
     </main>
 
     <script src="{!! url('assets/bootstrap/js/bootstrap.bundle.min.js') !!}"></script>
+    <script src="{!! url('assets/js/custom.js') !!}"></script>
       
   </body>
 </html>

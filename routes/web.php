@@ -47,4 +47,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function()
         Route::get('/reservation', 'ReservationController@show')->name('reservation.show');
         Route::post('/reservation', 'ReservationController@book')->name('reservation.book');
         Route::get('/reservation/{id?}', 'ReservationController@view')->name('reservation.view');
+
+        Route::get('/dashboard', 'CustomerController@show')->name('dashboard.show');
+        Route::get('/dashboard/{id?}', 'CustomerController@view')->name('dashboard.view');
+
+        Route::post('ajax-seatno', 'AjaxController@seatno');
 });

@@ -7,15 +7,17 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReservationRequest;
 use Illuminate\Support\Facades\Crypt;
+use App\Http\Controllers\ApiController;
+use URL;
 
 class ReservationController extends Controller
 {
     public function show()
     {
-    	$cities=self::get_api_data('cities');
+    	$cities=ApiController::get_api_data('cities');
     	$cities = json_decode(trim($cities), TRUE);
 
-    	$buses=self::get_api_data('buses');
+    	$buses=ApiController::get_api_data('buses');
     	$buses = json_decode(trim($buses), TRUE);
     
     	if (Auth::user()){	
@@ -49,15 +51,15 @@ class ReservationController extends Controller
      	$endlocation=$data['end_location'];
      	$vehicleno=$data['vehicle_no'];
 
-     	$city=self::get_api_data('city/'.$startlocation);
+     	$city=ApiController::get_api_data('city/'.$startlocation);
     	$city = json_decode(trim($city), TRUE);
     	$start_location=$city[0]['city_name'];
 
-    	$city=self::get_api_data('city/'.$endlocation);
+    	$city=ApiController::get_api_data('city/'.$endlocation);
     	$city = json_decode(trim($city), TRUE);
     	$end_location=$city[0]['city_name'];
 
-    	$bus=self::get_api_data('bus/'.$vehicleno);
+    	$bus=ApiController::get_api_data('bus/'.$vehicleno);
     	$bus = json_decode(trim($bus), TRUE);
     	$bus_no=$bus[0]['bus_no'];
     	$bus_name=$bus[0]['bus_name'];
@@ -73,27 +75,5 @@ class ReservationController extends Controller
 		     	return view('reservation.view')->with('data',$data)->with('apidata', $apidata);
      }
 
-     public function get_api_data($requesturl){
-     	$burl="http://localhost/VV/ticket-reservation/public/";
-	    $url = $burl."api/".$requesturl;
-
-	    $curl = curl_init();
-
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => $url,
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_ENCODING => '',
-		  CURLOPT_MAXREDIRS => 10,
-		  CURLOPT_TIMEOUT => 0,
-		  CURLOPT_FOLLOWLOCATION => true,
-		  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-		  CURLOPT_CUSTOMREQUEST => 'GET',
-		));
-
-		$response = curl_exec($curl);
-
-		curl_close($curl);
-		return $response;
-
-	}
+     
 }
