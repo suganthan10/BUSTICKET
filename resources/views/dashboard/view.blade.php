@@ -11,7 +11,7 @@
                 </div>
                 <div class="col-md-9">
 
-            <div class="col-md-12 col-lg-12 d-flex align-items-center">
+            <div class="col-md-12 col-lg-12 d-flex align-items-center" id="printdiv">
               <div class="card-body p-4 p-lg-5 text-black">
                 <div class="row">
                     <div class="col-md-6">
@@ -100,7 +100,7 @@
               </div>
             </div>
 
-                    
+                         <a href="javascript:void()" onClick="PrintElem()"> <img src="{{ url('assets/img/print-btn.jpg') }}" alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" /></a>         
 
                 </div>
             </div>
